@@ -351,6 +351,7 @@ namespace TR.Torrey.Weight.Capture.Viewmodels
             }
 
             // Tarea general para actualizar el estado online/offline de la UI 1 vez por segundo
+            /*
             _ = Task.Run(async () =>
             {
                 while (readScale)
@@ -363,6 +364,7 @@ namespace TR.Torrey.Weight.Capture.Viewmodels
                     });
                 }
             });
+            */
         }
 
 
@@ -418,8 +420,8 @@ namespace TR.Torrey.Weight.Capture.Viewmodels
         public async Task<string> LeerPesoDeBasculaAsync(string nombreBascula, IPEndPoint endpoint)
         {
             string peso = string.Empty;
+            var scale   = _scales?.FirstOrDefault(b => b.vName == nombreBascula);
 
-            var scale = _scales?.FirstOrDefault(b => b.vName == nombreBascula);
             if (scale == null || scale.iStatus != 1)
                 return peso;
 
