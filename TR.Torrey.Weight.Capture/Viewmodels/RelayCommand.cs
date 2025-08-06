@@ -24,8 +24,15 @@ namespace TR.Torrey.Weight.Capture.Viewmodels
             remove { CommandManager.RequerySuggested -= value; }
         }
 
+        public void Execute(object parameter)
+        {
+            T value = parameter == null ? default(T) : (T)parameter;
+            _execute(value);
+        }
+
+
         public bool CanExecute(object parameter) => _canExecute == null || _canExecute((T)parameter);
 
-        public void Execute(object parameter) => _execute((T)parameter);
+        //public void Execute(object parameter) => _execute((T)parameter);
     }
 }
